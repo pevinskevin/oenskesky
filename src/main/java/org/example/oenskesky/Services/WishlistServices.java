@@ -12,9 +12,9 @@ public class WishlistServices {
     @Autowired
     private WishlistRepository wishlistRepository;
 
-    public void createNewWebpage() {
+    public void createNewWishlist() {
         String randomPassword = generateRandomPassword(12);
-        wishlistRepository.createNewWish(randomPassword);
+        wishlistRepository.createNewWishlistInDb(randomPassword);
     }
 
     public int getId() {

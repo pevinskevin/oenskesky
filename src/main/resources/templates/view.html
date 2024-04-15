@@ -6,7 +6,10 @@
 </head>
 <body>
 <h1 th:text="${password}"></h1>
-<form action="/createwishbutton" method="post">
+
+
+
+<form th:action="@{'/' + ${id}}" method="post">
     <button type="submit">Add wish to wishlist</button>
     <!-- Optional hidden input field -->
     <input type="hidden" name="data" value="additionalData" />

@@ -15,6 +15,7 @@ public class IndexController {
 
     @Autowired
     WishlistServices wishlistServices;
+    @Autowired
     WishServices wishServices;
 
     @GetMapping("/")
@@ -23,36 +24,39 @@ public class IndexController {
     }
 
     @PostMapping("/createwishlist")
-    public String newWebPage(){
-        wishlistServices.createNewWebpage();
-        Integer id = wishlistServices.getId();
+    public String createWishlist(){
+        wishlistServices.createNewWishlist();
+        int id = wishlistServices.getId();
         return "redirect:/" + id;
     }
 
+    //The part in brackets below is called a URI ("Uniform Resource Identifier.")
+    //It maps the incoming HTTP Request to a controller.
+    //It specifies the URI patterns that the controller method can handle.
+    //URL ("Uniform Resource Locator") is a subgroup of URI.
     @GetMapping("/{id}")
-    public String newWebPageWithId(@PathVariable int id, Model model) {
-       String passwordViewed = wishlistServices.getPasswordViewed(id);
-       if (passwordViewed.contains("false")){
-           String password = wishlistServices.getPassword(id);
-           model.addAttribute("password", password);
+    public String showWishlist(@PathVariable int id, Model model) {
+       if (wishlistServices.getPasswordViewed(id).contains("false")){
+           model.addAttribute("password", wishlistServices.getPassword(id));
+           //changes "password_viewed" column from 'false' to 'true'
            wishlistServices.passwordHasBeenViewed(id);
        }
-       model.addAttribute("wish", wishServices.getWishes(id));
-       return "/view";
+        model.addAttribute("wish", wishServices.getWishes(id));
+        return "/view";
     }
 
-    @PostMapping("/createwishbutton")
-    public String postMethod(){
-    return "redirect:/createawish";
+    @PostMapping("/{id}")
+        public String redirectToWishForm(@PathVariable int id){
+        return "redirect:/createawish/" + id;
     }
 
-    @GetMapping("/createawish")
-    public String displayWishCreator() {
+    @GetMapping("/createawish/{id}")
+        public String displayWishForm(@PathVariable int id) {
         return "/createawish";
     }
 
-    @PostMapping("/createawishform")
-    public String createAWish(@RequestParam("URL") String url, @RequestParam("Wish name") String description, @RequestParam("Comments") String comment, @RequestParam int price) {
-        return "redirect:/";
+    @PostMapping("/createawish/{id}")
+        public String createWish(@PathVariable int id/*, @RequestParam("URL") String url, @RequestParam("Wish name") String description, @RequestParam("Comments") String comment, @RequestParam int price*/) {
+        return "redirect:/" + id;
     }
 }

@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/createawishform" method="post">
+<form th:action="@{'/createawish/' + ${id}}" method="post">
     <input type="hidden" name="originalPageId" value="${originalPageId}">
 
     <label for="url">URL:</label>

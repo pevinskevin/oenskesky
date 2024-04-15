@@ -7,7 +7,7 @@ USE oenskesky;
 CREATE TABLE wishlist (
                           `id` INT AUTO_INCREMENT PRIMARY KEY,
                           `password` VARCHAR(255) NOT NULL,
-    /*Since the ability to specify size of int variables will soon be deprecated, ENUM has been utlilized to create a boolean column*/
+    /*Since the ability to specify size of int variables will soon be deprecated, ENUM has been utililized to create a boolean column*/
                           `password_viewed` ENUM ('false', 'true') DEFAULT 'false'
 );
 CREATE TABLE wish (

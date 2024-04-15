@@ -10,7 +10,7 @@ public class WishlistRepository {
     JdbcTemplate jdbcTemplate;
 
     //
-    public void createNewWish(String randomPassword) {
+    public void createNewWishlistInDb(String randomPassword) {
         String query = "INSERT INTO wishlist (password) VALUES (?) ";
         jdbcTemplate.update(query, randomPassword);
     }
@@ -26,9 +26,9 @@ public class WishlistRepository {
         return jdbcTemplate.queryForObject(query, String.class, id);
     }
 
-    public void updatePasswordViewed(String a, int id) {
+    public void updatePasswordViewed(String setToTrue, int id) {
         String query = "UPDATE wishlist SET password_viewed = ? WHERE id = ?";
-        jdbcTemplate.update(query, a, id);
+        jdbcTemplate.update(query, setToTrue, id);
     }
 
     public String getPasswordViewed(int id) {
