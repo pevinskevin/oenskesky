@@ -26,6 +26,7 @@ public class IndexController {
         return "/index";
     }
 
+
     @PostMapping("/createwishlist")
     public String createWishlist(){
         wishlistServices.createNewWishlist();
