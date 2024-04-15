@@ -19,8 +19,8 @@ public class WishlistRepository {
     public int getWishlistId() {
         String query = "SELECT MAX(id) FROM wishlist";
         return jdbcTemplate.queryForObject(query, Integer.class);
-
     }
+
     public String getWishlistPassword(int id) {
         String query = "SELECT password FROM wishlist WHERE id = ?";
         return jdbcTemplate.queryForObject(query, String.class, id);

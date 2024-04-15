@@ -1,10 +1,10 @@
 package org.example.oenskesky.Models;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class Wish {
     private int id;
-
-
     private String url;
     private String description;
     private String comment;
@@ -12,13 +12,7 @@ public class Wish {
     private String email;
     private int wishlistID;
 
-    public Wish(String url, String description, String comment, int price, String email, int wishlistID) {
-        this.url = url;
-        this.description = description;
-        this.comment = comment;
-        this.price = price;
-        this.email = email;
-        this.wishlistID = wishlistID;
+    public Wish() {
     }
 
     public int getId() {
@@ -61,15 +55,7 @@ public class Wish {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public int getWishlistID() {
         return wishlistID;
-    }
-
-    public void setWishlistID(int wishlistID) {
-        this.wishlistID = wishlistID;
     }
 }

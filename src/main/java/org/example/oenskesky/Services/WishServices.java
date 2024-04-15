@@ -21,6 +21,10 @@ public class WishServices {
         return wishRepository.getWishes(wishlistId);
     }
 
+    public int checkIfWishIdIsNull(int id) {
+        return wishRepository.getMaxWishId(id);
+    }
+
     public void addEmail(String email, int id) {
         wishRepository.addEmail(email, id);
     }

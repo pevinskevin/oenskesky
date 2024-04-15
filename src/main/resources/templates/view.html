@@ -7,8 +7,20 @@
 <body>
 <h1 th:text="${password}"></h1>
 
+<!--Only displays wishes if there are wishes in the DB.-->
+<div th:if="${wishId != 0}">
+    <table>
+        <thead><td>URL</td><td>Name</td><td>Comment</td><td>Price</td></thead>
+        <tr th:each="wish : ${wish}">
+            <td th:text="${wish.url}"></td>
+            <td th:text="${wish.description}"></td>
+            <td th:text="${wish.comment}"></td>
+            <td th:text="${wish.price}"></td>
+        </tr>
+    </table>
+</div>
 
-
+<!--Button to create a new wish.-->
 <form th:action="@{'/' + ${id}}" method="post">
     <button type="submit">Add wish to wishlist</button>
     <!-- Optional hidden input field -->

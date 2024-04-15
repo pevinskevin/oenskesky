@@ -5,20 +5,19 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{'/createawish/' + ${id}}" method="post">
-    <input type="hidden" name="originalPageId" value="${originalPageId}">
+<form th:action="@{'/createawish/' + ${id}}" th:object="${wish}" method="post">
 
     <label for="url">URL:</label>
-    <input type="text" id="url" name="URL"/> <br> <br>
+    <input th:field="*{url}" type="text" id="url" name="URL"/> <br> <br>
 
     <label for="description">Wish name:</label>
-    <input type="text" id="description" name="Wish name"/> <br> <br>
+    <input th:field="*{description}" type="text" id="description" name="Wish name"/> <br> <br>
 
     <label for="comment">Comments:</label>
-    <textarea id="comment" name="Comments" rows="4" cols="50"/> </textarea> <br> <br>
+    <textarea th:field="*{comment}" id="comment" name="Comments" rows="4" cols="50"/> </textarea> <br> <br>
 
     <label for="price">Price:</label>
-    <input type="number" id="price" name="Price"/> <br> <br>
+    <input th:field="*{price}" type="number" id="price" name="Price"/> <br> <br>
 
     <input type="submit" value="send">
 </form>

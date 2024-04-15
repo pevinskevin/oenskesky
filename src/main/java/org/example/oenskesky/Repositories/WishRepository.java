@@ -2,6 +2,7 @@ package org.example.oenskesky.Repositories;
 
 import org.example.oenskesky.Models.Wish;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -24,6 +25,15 @@ public class WishRepository {
         String query = "SELECT * FROM wish WHERE wishlist_id = ?";
         RowMapper<Wish> rowMapper = new BeanPropertyRowMapper<>(Wish.class);
         return jdbcTemplate.query(query, rowMapper, wishlistId);
+    }
+
+    public int getMaxWishId(int id) {
+        String query = "SELECT MAX(id) FROM wish WHERE wishlist_id = ?";
+        try {
+        return jdbcTemplate.queryForObject(query, Integer.class, id);}
+        catch (Exception e){
+            return 0;
+        }
     }
 
     public void addEmail(String email, int id){
