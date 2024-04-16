@@ -25,7 +25,7 @@ public class WishServices {
         return wishRepository.getMaxWishId(id);
     }
 
-    public void addEmail(String email, String id) {
+    public void addEmail(String email, int id) {
         wishRepository.addEmail(email, id);
     }
 }

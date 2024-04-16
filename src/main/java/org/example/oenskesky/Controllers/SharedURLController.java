@@ -34,6 +34,7 @@ public class SharedURLController {
 
     @PostMapping("/{id}/{intId}")
     public String reserveWish(@PathVariable String id, @PathVariable int intId) {
-        return "redirect:/{id}/{intId}/reservegift";
+        int wishId = wishlistServices.getIntIdWhereIdEquals(id);
+        return "redirect:/{id}/{intId}/reservegift/" + wishId;
     }
 }

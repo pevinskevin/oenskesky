@@ -19,10 +19,10 @@
                 <td>No</td>
 
                 <td>
-                    <form th:action="@{'/' + ${id} + '/createsharelink'}" method="post">
+                    <form th:action="@{'/' + ${id} + '/' + ${intId}}" method="post">
                     <button type="submit">Reserve gift</button>
                     <!-- Optional hidden input field -->
-                    <input type="hidden" name="data" value="additionalData" />
+                    <input type="hidden" name="giftId" th:value="${wish.id}" value="additionalData" />
                     </form>
                 </td>
             </div>

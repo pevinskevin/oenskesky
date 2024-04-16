@@ -35,7 +35,7 @@ public class WishRepository {
         }
     }
 
-    public void addEmail(String email, String id){
+    public void addEmail(String email, int id){
         String query = "UPDATE wish SET email = ? WHERE id = ?";
         jdbcTemplate.update(query, email, id);
     }
