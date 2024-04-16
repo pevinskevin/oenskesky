@@ -1,5 +1,4 @@
 package org.example.oenskesky.Controllers;
-import org.example.oenskesky.Models.Wish;
 import org.example.oenskesky.Services.WishServices;
 import org.example.oenskesky.Services.WishlistServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ public class IndexController {
     @PostMapping("/createwishlist")
     public String createWishlist(){
         wishlistServices.createNewWishlist();
-        int id = wishlistServices.getId();
+        String id = wishlistServices.getId(wishlistServices.getIntId());
         return "redirect:/" + id;
     }
 }

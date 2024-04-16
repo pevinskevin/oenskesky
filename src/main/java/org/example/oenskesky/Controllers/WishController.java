@@ -19,13 +19,13 @@ public class WishController {
 
 
     @GetMapping("/createawish/{id}")
-    public String displayWishForm(@PathVariable int id, Model model) {
+    public String displayWishForm(@PathVariable String id, Model model) {
         model.addAttribute("wish", new Wish());
         return "/createawish";
     }
 
     @PostMapping("/createawish/{id}")
-    public String createWish(@PathVariable int id, @ModelAttribute("wish") Wish wish) {
+    public String createWish(@PathVariable String id, @ModelAttribute("wish") Wish wish) {
         wishServices.addWish(wish.getUrl(), wish.getDescription(), wish.getComment(), wish.getPrice(), id);
         return "redirect:/" + id;
     }

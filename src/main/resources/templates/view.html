@@ -26,5 +26,12 @@
     <!-- Optional hidden input field -->
     <input type="hidden" name="data" value="additionalData" />
 </form>
+
+<form th:action="@{'/' + ${id} + '/createsharelink'}" method="post">
+    <button type="submit">Create webpage for sharing</button>
+    <!-- Optional hidden input field -->
+    <input type="hidden" name="data" value="additionalData" />
+</form>
+
 </body>
 </html>

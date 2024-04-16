@@ -5,9 +5,9 @@ CREATE DATABASE IF NOT EXISTS oenskesky;
 USE oenskesky;
 
 CREATE TABLE wishlist (
-                          `id` INT AUTO_INCREMENT PRIMARY KEY,
+                          `id` VARCHAR(255) UNIQUE,
+                          `int_id` INT AUTO_INCREMENT PRIMARY KEY,
                           `password` VARCHAR(255) NOT NULL,
-    /*Since the ability to specify size of int variables will soon be deprecated, ENUM has been utililized to create a boolean column*/
                           `password_viewed` ENUM ('false', 'true') DEFAULT 'false'
 );
 CREATE TABLE wish (
@@ -17,7 +17,7 @@ CREATE TABLE wish (
                       `comment` VARCHAR(255),
                       `price` INT NOT NULL,
                       `email` VARCHAR(255),
-                      `wishlist_id` INT NOT NULL,
+                      `wishlist_id` VARCHAR(255) NOT NULL,
                       FOREIGN KEY (`wishlist_id`) REFERENCES `wishlist`(`id`)
                           ON DELETE CASCADE
 );

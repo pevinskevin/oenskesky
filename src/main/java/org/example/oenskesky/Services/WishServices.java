@@ -13,19 +13,19 @@ public class WishServices {
     @Autowired
     private WishRepository wishRepository;
 
-    public void addWish(String url, String description, String comment, int price, int wishlistId){
+    public void addWish(String url, String description, String comment, int price, String wishlistId){
         wishRepository.addWish(url, description, comment, price, wishlistId);
     }
 
-    public List<Wish> getWishes(int wishlistId){
+    public List<Wish> getWishes(String wishlistId){
         return wishRepository.getWishes(wishlistId);
     }
 
-    public int checkIfWishIdIsNull(int id) {
+    public String checkIfWishIdIsNull(String id) {
         return wishRepository.getMaxWishId(id);
     }
 
-    public void addEmail(String email, int id) {
+    public void addEmail(String email, String id) {
         wishRepository.addEmail(email, id);
     }
 }

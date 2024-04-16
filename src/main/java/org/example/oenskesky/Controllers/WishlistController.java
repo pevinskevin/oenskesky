@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.UUID;
+
 @Controller
 public class WishlistController {
 
@@ -18,19 +20,31 @@ public class WishlistController {
     WishServices wishServices;
 
     @GetMapping("/{id}")
-    public String showWishlist(@PathVariable int id, Model model) {
+    public String showWishlist(@PathVariable String id, Model model) {
         if (wishlistServices.getPasswordViewed(id).contains("false")){
             model.addAttribute("password", wishlistServices.getPassword(id));
             //changes "password_viewed" column from 'false' to 'true'
             wishlistServices.passwordHasBeenViewed(id);
         }
-        model.addAttribute("wishId", wishServices.checkIfWishIdIsNull(id));
+        int nullValue;
+        if (((wishServices.checkIfWishIdIsNull(id)) == null)){
+             nullValue = 0;
+            model.addAttribute("wishId", nullValue);
+        } else model.addAttribute("wishId", Integer.parseInt(wishServices.checkIfWishIdIsNull(id)));
+
         model.addAttribute("wish", wishServices.getWishes(id));
         return "/view";
     }
 
     @PostMapping("/{id}")
-    public String redirectToWishForm(@PathVariable int id){
+    public String redirectToWishForm(@PathVariable String id){
         return "redirect:/createawish/" + id;
+    }
+
+    @PostMapping("/{id}/createsharelink")
+    public String createShareLink(@PathVariable String id) {
+        int intId = wishlistServices.getIntIdWhereIdEquals(id);
+        String randomString = UUID.randomUUID().toString();
+        return "redirect:/" + id + "/" + intId;
     }
 }

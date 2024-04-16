@@ -1,14 +1,16 @@
 package org.example.oenskesky.Models;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class Wishlist {
-    private int id;
+    private String id;
     private String password;
 
     public Wishlist() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
     public String getPassword() {

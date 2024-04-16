@@ -4,18 +4,18 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Wish {
-    private int id;
+    private String id;
     private String url;
     private String description;
     private String comment;
     private int price;
     private String email;
-    private int wishlistID;
+    private String wishlistID;
 
     public Wish() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -55,7 +55,7 @@ public class Wish {
         return email;
     }
 
-    public int getWishlistID() {
+    public String getWishlistID() {
         return wishlistID;
     }
 }
