@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{'/createawish/' + ${id}}" th:object="${wish}" method="post">
+<form th:action="@{'/createawish/' + ${wishlistId}}" th:object="${wish}" method="post">
 
     <label for="url">URL:</label>
     <input th:field="*{url}" type="text" id="url" name="URL"/> <br> <br>

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SharedURLController {
@@ -21,7 +22,10 @@ public class SharedURLController {
     Wishlist wishlist;
 
     @GetMapping("/{id}/{intId}")
-    public String sharedURL(@PathVariable String id, @PathVariable int intId, Model model) {
+    public String sharedURL(@PathVariable String id,
+                            @PathVariable int intId,
+                            Model model){
+
         wishlistServices.causeErrorIfNoMatch(id, intId);
         int nullValue;
         if (((wishServices.checkIfWishIdIsNull(id)) == null)){
@@ -33,8 +37,11 @@ public class SharedURLController {
     }
 
     @PostMapping("/{id}/{intId}")
-    public String reserveWish(@PathVariable String id, @PathVariable int intId) {
-        int wishId = wishlistServices.getIntIdWhereIdEquals(id);
+    public String reserveWish(@PathVariable String id,
+                              @PathVariable int intId,
+                              @RequestParam("wishId") int wishId){
+
+        int anotherId = wishlistServices.getIntIdWhereIdEquals(id);
         return "redirect:/{id}/{intId}/reservegift/" + wishId;
     }
 }

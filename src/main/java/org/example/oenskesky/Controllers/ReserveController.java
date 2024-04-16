@@ -13,15 +13,24 @@ public class ReserveController {
     @Autowired
     WishServices wishServices;
 
+    //If I don't name the PathVariables weirdly the program crashes. - No idea why.
     @GetMapping("/{id}/{intId}/reservegift/{wishId}")
-    public String reserveView(@PathVariable String id, @PathVariable Integer intId, @PathVariable Integer wishId, Model model){
+    public String reserveView(@PathVariable String id,
+                              @PathVariable Integer intId,
+                              @PathVariable int wishId,
+                              Model model){
+
         model.addAttribute("wish", new Wish());
         return "reserve";
     }
 
-    @PostMapping("/{id}/{intId}/reservegift/{wishId}")
-    public String reserveGift(@PathVariable String id, @PathVariable Integer intId, Integer wishId, @RequestParam("giftId") Integer giftId, @ModelAttribute("wish") Wish wish) {
+    //If I don't name the PathVariables weirdly the program crashes. - No idea why.
+    @PostMapping("/{anotherRefactor}/{refactoredId}/reservegift/{giftId}")
+    public String reserveGift(@PathVariable String anotherRefactor,
+                              @PathVariable Integer refactoredId,
+                              @PathVariable int giftId,
+                              @ModelAttribute("wish") Wish wish){
         wishServices.addEmail(wish.getEmail(), giftId);
-        return "redirect:/{id}/{intId}";
+        return "redirect:/{anotherRefactor}/{refactoredId}";
     }
 }

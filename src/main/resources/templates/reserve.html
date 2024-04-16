@@ -5,6 +5,10 @@
     <title>Title</title>
 </head>
 <body>
+
+<input type="hidden" name="wishId" th:value="${wish.id}" />
+
+
 <form th:action="@{'/' + ${id} + '/' + ${intId} + '/reservegift/' + ${wishId}  }" th:object="${wish}" method="post">
 
     <label for="url">Enter your email:</label>

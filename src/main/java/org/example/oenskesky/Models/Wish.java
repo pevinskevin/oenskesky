@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Wish {
-    private String id;
+    private int id;
     private String url;
     private String description;
     private String comment;
@@ -15,7 +15,11 @@ public class Wish {
     public Wish() {
     }
 
-    public String getId() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
         return id;
     }
 
@@ -57,5 +61,9 @@ public class Wish {
 
     public String getWishlistID() {
         return wishlistID;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

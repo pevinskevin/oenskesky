@@ -19,32 +19,32 @@ public class WishlistController {
     @Autowired
     WishServices wishServices;
 
-    @GetMapping("/{id}")
-    public String showWishlist(@PathVariable String id, Model model) {
-        if (wishlistServices.getPasswordViewed(id).contains("false")){
-            model.addAttribute("password", wishlistServices.getPassword(id));
+    @GetMapping("/{wishlistId}")
+    public String showWishlist(@PathVariable String wishlistId, Model model) {
+        if (wishlistServices.getPasswordViewed(wishlistId).contains("false")){
+            model.addAttribute("password", wishlistServices.getPassword(wishlistId));
             //changes "password_viewed" column from 'false' to 'true'
-            wishlistServices.passwordHasBeenViewed(id);
+            wishlistServices.passwordHasBeenViewed(wishlistId);
         }
         int nullValue;
-        if (((wishServices.checkIfWishIdIsNull(id)) == null)){
+        if (((wishServices.checkIfWishIdIsNull(wishlistId)) == null)){
              nullValue = 0;
             model.addAttribute("wishId", nullValue);
-        } else model.addAttribute("wishId", Integer.parseInt(wishServices.checkIfWishIdIsNull(id)));
+        } else model.addAttribute("wishId", Integer.parseInt(wishServices.checkIfWishIdIsNull(wishlistId)));
 
-        model.addAttribute("wish", wishServices.getWishes(id));
+        model.addAttribute("wish", wishServices.getWishes(wishlistId));
         return "/view";
     }
 
-    @PostMapping("/{id}")
-    public String redirectToWishForm(@PathVariable String id){
-        return "redirect:/createawish/" + id;
+    @PostMapping("/{wishlistId}")
+    public String redirectToWishForm(@PathVariable String wishlistId){
+        return "redirect:/createawish/" + wishlistId;
     }
 
-    @PostMapping("/{id}/createsharelink")
-    public String createShareLink(@PathVariable String id) {
-        int intId = wishlistServices.getIntIdWhereIdEquals(id);
+    @PostMapping("/{wishlistId}/createsharelink")
+    public String createShareLink(@PathVariable String wishlistId) {
+        int intId = wishlistServices.getIntIdWhereIdEquals(wishlistId);
         String randomString = UUID.randomUUID().toString();
-        return "redirect:/" + id + "/" + intId;
+        return "redirect:/" + wishlistId + "/" + intId;
     }
 }
