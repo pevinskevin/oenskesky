@@ -1,0 +1,15 @@
+body {
+    /* Ensure the body takes up the full height of the page */
+    height: 100vh;
+    margin: 0;
+    /* Use flexbox to center the div both vertically and horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#centerDiv {
+    /* Add any additional styles you want to your div */
+    /* For example, you might want to add a border or background color */
+
+}

@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- Unless I specify the full path the application won't be able to find the file,
+    and instead the WishlistController will try to take it instead due to internal pathing error-->
+    <link rel="stylesheet" th:href="@{/resources/static/css/styles.css}">
 </head>
 <body>
-<form action="/createwishlist" method="post">
-    <button type="submit">Create new wishlist</button>
-    <!-- Optional hidden input field -->
-    <input type="hidden" name="data" value="additionalData" />
-</form>
+<div id="centerDiv">
+    <form action="/createwishlist" method="post">
+        <button type="submit">Create new wishlist</button>
+        <!-- Optional hidden input field -->
+        <input type="hidden" name="data" value="additionalData" />
+    </form>
+</div>
 </body>
 </html>
