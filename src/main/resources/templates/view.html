@@ -25,13 +25,13 @@
         </div>
 
         <!--Button to create a new wish.-->
-        <form th:action="@{'/' + ${wishlistId}}" method="post">
+        <form th:action="@{'/' + ${wishListStringId}}" method="post">
             <button type="submit">Add wish to wishlist</button>
             <!-- Optional hidden input field -->
             <input type="hidden" name="data" value="additionalData" />
         </form>
         <br>
-        <form th:action="@{'/' + ${wishlistId} + '/createsharelink'}" method="post">
+        <form th:action="@{'/' + ${wishListStringId} + '/createsharelink'}" method="post">
             <button type="submit">Create webpage for sharing</button>
             <!-- Optional hidden input field -->
             <input type="hidden" name="data" value="additionalData" />

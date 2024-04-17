@@ -1,6 +1,7 @@
 package org.example.oenskesky.Controllers;
-import org.example.oenskesky.Services.WishServices;
-import org.example.oenskesky.Services.WishlistServices;
+
+import org.example.oenskesky.Services.WishService;
+import org.example.oenskesky.Services.WishListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +12,9 @@ import org.springframework.web.bind.annotation.*;
 public class IndexController {
 
     @Autowired
-    WishlistServices wishlistServices;
+    WishListService wishListService;
     @Autowired
-    WishServices wishServices;
+    WishService wishService;
 
 
     //The part in brackets below is called a URI ("Uniform Resource Identifier.")
@@ -25,11 +26,8 @@ public class IndexController {
         return "/index";
     }
 
-
-    @PostMapping("/createwishlist")
-    public String createWishlist(){
-        wishlistServices.createNewWishlist();
-        String id = wishlistServices.getId(wishlistServices.getIntId());
-        return "redirect:/" + id;
+    @PostMapping("/createawishlist")
+    public String createWishlist() {
+        return "redirect:/" + wishListService.createWishListAndReturnStringId();
     }
 }

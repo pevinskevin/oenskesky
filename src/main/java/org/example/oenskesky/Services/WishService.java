@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class WishServices {
+public class WishService {
 
     @Autowired
     private WishRepository wishRepository;
@@ -18,14 +18,18 @@ public class WishServices {
     }
 
     public List<Wish> getWishes(String wishlistId){
-        return wishRepository.getWishes(wishlistId);
+        return wishRepository.getAllWishes(wishlistId);
     }
 
     public String checkIfWishIdIsNull(String id) {
-        return wishRepository.getMaxWishId(id);
+        return wishRepository.getLatestWishIdFromWishListId(id);
     }
 
     public void addEmail(String email, int id) {
-        wishRepository.addEmail(email, id);
+        wishRepository.addEmailToWish(email, id);
+    }
+
+    public void validateStringIdAndWishIntegerIdMatch(String wishListStringId, int wishIntegerId) {
+        wishRepository.getwishListStringIdAndVerify(wishListStringId, wishIntegerId);
     }
 }

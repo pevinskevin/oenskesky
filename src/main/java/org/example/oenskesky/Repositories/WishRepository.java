@@ -20,13 +20,13 @@ public class WishRepository {
         jdbcTemplate.update(query, url, description, comment, price, wishlistId);
     }
 
-    public List<Wish> getWishes(String wishlistId){
+    public List<Wish> getAllWishes(String wishlistId){
         String query = "SELECT * FROM wish WHERE wishlist_id = ?";
         RowMapper<Wish> rowMapper = new BeanPropertyRowMapper<>(Wish.class);
         return jdbcTemplate.query(query, rowMapper, wishlistId);
     }
 
-    public String getMaxWishId(String id) {
+    public String getLatestWishIdFromWishListId(String id) {
         String query = "SELECT MAX(id) FROM wish WHERE wishlist_id = ?";
         try {
         return jdbcTemplate.queryForObject(query, String.class, id);}
@@ -34,9 +34,12 @@ public class WishRepository {
             return "0";
         }
     }
-
-    public void addEmail(String email, int id){
+    public void addEmailToWish(String email, int id){
         String query = "UPDATE wish SET email = ? WHERE id = ?";
         jdbcTemplate.update(query, email, id);
+    }
+    public String getwishListStringIdAndVerify(String wishListStringId, int wishIntegerId) {
+        String query = "SELECT wishlist_id FROM wish WHERE wishlist_id = ? AND id = ?";
+        return jdbcTemplate.queryForObject(query, String.class, wishListStringId, wishIntegerId);
     }
 }

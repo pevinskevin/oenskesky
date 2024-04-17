@@ -1,8 +1,8 @@
 package org.example.oenskesky.Controllers;
 
-import org.example.oenskesky.Models.Wishlist;
-import org.example.oenskesky.Services.WishServices;
-import org.example.oenskesky.Services.WishlistServices;
+import org.example.oenskesky.Models.WishList;
+import org.example.oenskesky.Services.WishService;
+import org.example.oenskesky.Services.WishListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,33 +15,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SharedURLController {
 
     @Autowired
-    WishServices wishServices;
+    WishService wishService;
     @Autowired
-    WishlistServices wishlistServices;
+    WishListService wishListService;
     @Autowired
-    Wishlist wishlist;
+    WishList wishList;
 
-    @GetMapping("/{id}/{intId}")
-    public String sharedURL(@PathVariable String id,
-                            @PathVariable int intId,
-                            Model model){
+    @GetMapping("/{wishListStringId}/{wishListIntegerId}")
+    public String sharedURL(@PathVariable String wishListStringId,
+                            @PathVariable int wishListIntegerId,
+                            Model model) {
 
-        wishlistServices.causeErrorIfNoMatch(id, intId);
+        wishListService.validateStringIdAndIntegerMatch(wishListStringId, wishListIntegerId);
         int nullValue;
-        if (((wishServices.checkIfWishIdIsNull(id)) == null)){
+        if (((wishService.checkIfWishIdIsNull(wishListStringId)) == null)) {
             nullValue = 0;
             model.addAttribute("wishId", nullValue);
-        } else model.addAttribute("wishId", Integer.parseInt(wishServices.checkIfWishIdIsNull(id)));
-        model.addAttribute("wish", wishServices.getWishes(id));
+        } else model.addAttribute("wishId", Integer.parseInt(wishService.checkIfWishIdIsNull(wishListStringId)));
+        model.addAttribute("wish", wishService.getWishes(wishListStringId));
         return "/sharedurlview";
     }
 
-    @PostMapping("/{id}/{intId}")
-    public String reserveWish(@PathVariable String id,
-                              @PathVariable int intId,
-                              @RequestParam("wishId") int wishId){
+    @PostMapping("/{wishListStringId}/{wishListIntegerId}")
+    public String reserveWish(@PathVariable String wishListStringId,
+                              @PathVariable int wishListIntegerId,
+                              @RequestParam("wishIntegerId") int wishIntegerId) {
 
-        int anotherId = wishlistServices.getIntIdWhereIdEquals(id);
-        return "redirect:/{id}/{intId}/reservegift/" + wishId;
+        return "redirect:/{wishListStringId}/{wishListIntegerId}/reservegift/" + wishIntegerId;
     }
 }

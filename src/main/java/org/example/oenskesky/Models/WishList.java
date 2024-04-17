@@ -3,11 +3,11 @@ package org.example.oenskesky.Models;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Wishlist {
+public class WishList {
     private String id;
     private String password;
 
-    public Wishlist() {
+    public WishList() {
     }
 
     public String getId() {

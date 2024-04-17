@@ -4,7 +4,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class WishlistRepository {
+public class WishListRepository {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -15,39 +15,39 @@ public class WishlistRepository {
         jdbcTemplate.update(query, randomID, randomPassword);
     }
 
-    public int getWishlistIntId() {
+    public int getLatestIntegerId() {
         String query = "SELECT MAX(int_id) FROM wishlist";
         return jdbcTemplate.queryForObject(query, Integer.class);
     }
 
-    public String getWishlistId(int intId) {
+    public String getStringIdWhereIntegerId(int wishListIntegerId) {
         String query = "SELECT id FROM wishlist WHERE int_id = ?";
-        return jdbcTemplate.queryForObject(query, String.class, intId);
+        return jdbcTemplate.queryForObject(query, String.class, wishListIntegerId);
     }
 
-    public int getWishIntIdWhereIdEquqls(String id) {
+    public int getIntegerIdWhereStringId(String wishListStringId) {
         String query = "SELECT int_id FROM wishlist WHERE id = ?";
-        return jdbcTemplate.queryForObject(query, Integer.class, id);
+        return jdbcTemplate.queryForObject(query, Integer.class, wishListStringId);
     }
 
-    public String getWishlistPassword(String id) {
+    public String getWishListPasswordFromStringId(String wishListStringId) {
         String query = "SELECT password FROM wishlist WHERE id = ?";
-        return jdbcTemplate.queryForObject(query, String.class, id);
+        return jdbcTemplate.queryForObject(query, String.class, wishListStringId);
     }
 
-    public void updatePasswordViewed(String setToTrue, String id) {
+    public void setPasswordViewed(String setToTrue, String wishListStringId) {
         String query = "UPDATE wishlist SET password_viewed = ? WHERE id = ?";
-        jdbcTemplate.update(query, setToTrue, id);
+        jdbcTemplate.update(query, setToTrue, wishListStringId);
     }
 
-    public String getPasswordViewed(String id) {
+    public String getPasswordViewedStatus(String wishListStringId) {
         String query = "SELECT password_viewed FROM wishlist WHERE id = ?";
-        return jdbcTemplate.queryForObject(query, String.class, id);
+        return jdbcTemplate.queryForObject(query, String.class, wishListStringId);
     }
 
-    public String causeErrorIfNoMatch(String id, int intId) {
+    public String getIdAndVerify(String wishListStringId, int wishListIntegerId) {
         String query = "SELECT id FROM wishlist WHERE id = ? AND int_id = ?";
-        return jdbcTemplate.queryForObject(query, String.class, id, intId);
+        return jdbcTemplate.queryForObject(query, String.class, wishListStringId, wishListIntegerId);
     }
 
 }
