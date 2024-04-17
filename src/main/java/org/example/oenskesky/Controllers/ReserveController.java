@@ -17,9 +17,9 @@ public class ReserveController {
     WishListService wishListService;
 
     @GetMapping("/{wishListPassword}/reservegift/{wishIntegerId}")
-    public String reserveView(@PathVariable String wishListPassword,
-                              @PathVariable int wishIntegerId,
-                              Model model) {
+    public String displayReserveWishForm(@PathVariable String wishListPassword,
+                                         @PathVariable int wishIntegerId,
+                                         Model model) {
 
         String wishListStringId = wishListService.getWishListStringIdFromWishListPassword(wishListPassword);
         wishService.validateStringIdAndWishIntegerIdMatch(wishListStringId, wishIntegerId);
@@ -28,7 +28,7 @@ public class ReserveController {
     }
 
     @PostMapping("/{wishListStringId}/reservegift/{wishIntegerId}")
-    public String reserveGift(@PathVariable String wishListStringId,
+    public String reserveWish(@PathVariable String wishListStringId,
                               @PathVariable int wishIntegerId,
                               @ModelAttribute("wish") Wish wish) {
 

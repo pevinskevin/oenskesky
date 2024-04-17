@@ -30,8 +30,8 @@ public class WishController {
     }
 
     @PostMapping("/createawish/{wishListStringId}")
-    public String createWish(@PathVariable String wishListStringId,
-                             @ModelAttribute("wish") Wish wish) {
+    public String postWish(@PathVariable String wishListStringId,
+                           @ModelAttribute("wish") Wish wish) {
 
         wishService.addWish(wish.getUrl(), wish.getDescription(), wish.getComment(), wish.getPrice(), wishListStringId);
         return "redirect:/" + wishListStringId;

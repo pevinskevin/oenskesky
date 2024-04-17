@@ -17,10 +17,10 @@ public class EditWishController {
     WishService wishService;
 
     @GetMapping("/{wishListStringId}/{wishListIntegerId}/editwish/{wishIntegerId}")
-    public String showEditWishPage(@PathVariable String wishListStringId,
-                                   @PathVariable int wishListIntegerId,
-                                   @PathVariable int wishIntegerId,
-                                   Model model){
+    public String displayEditWishPage(@PathVariable String wishListStringId,
+                                      @PathVariable int wishListIntegerId,
+                                      @PathVariable int wishIntegerId,
+                                      Model model){
 
         wishListService.validateStringIdAndWishListIntegerMatch(wishListStringId, wishListIntegerId);
         wishService.validateStringIdAndWishIntegerIdMatch(wishListStringId, wishIntegerId);

@@ -22,7 +22,7 @@ public class IndexController {
     //It specifies the URI patterns that the controller method can handle.
     //URL ("Uniform Resource Locator") is a subgroup of URI.
     @GetMapping("/")
-    public String index(Model model) {
+    public String displayIndex(Model model) {
         return "index";
     }
 

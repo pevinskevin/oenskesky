@@ -22,8 +22,8 @@ public class SharedURLController {
     WishList wishList;
 
     @GetMapping("/sharedlist/{wishListPassword}")
-    public String showSharingWishList(@PathVariable String wishListPassword,
-                                      Model model) {
+    public String displayShareableWishList(@PathVariable String wishListPassword,
+                                           Model model) {
 
         String wishListStringId = wishListService.getWishListStringIdFromWishListPassword(wishListPassword);
         int nullValue;

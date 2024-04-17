@@ -20,7 +20,7 @@ public class WishListController {
     WishService wishService;
 
     @GetMapping("/{wishListStringId}")
-    public String showWishlist(@PathVariable String wishListStringId,
+    public String showWishList(@PathVariable String wishListStringId,
                                Model model) {
 
         int nullValue;
@@ -34,13 +34,13 @@ public class WishListController {
     }
 
     @PostMapping("/{wishListStringId}")
-    public String redirectToWishForm(@PathVariable String wishListStringId) {
+    public String redirectToCreateAWishPage(@PathVariable String wishListStringId) {
         int wishListIntegerId = wishListService.getIntegerIdForStringId(wishListStringId);
         return String.format("redirect:/createawish/%s/%d", wishListStringId, wishListIntegerId);
     }
 
     @PostMapping("/{wishListStringId}/createsharelink")
-    public String createShareLink(@PathVariable String wishListStringId) {
+    public String redirectToShareableWishList(@PathVariable String wishListStringId) {
 
         String wishListPassword = wishListService.getWishListPassword(wishListStringId);
         return String.format("redirect:/sharedlist/%s", wishListPassword);
