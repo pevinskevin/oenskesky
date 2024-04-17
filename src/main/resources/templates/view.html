@@ -18,12 +18,20 @@
             <td>Name</td>
             <td>Comment</td>
             <td>Price</td>
+            <td><!--Edit wish--></td>
             </thead>
             <tr th:each="wish : ${wish}">
                 <td th:text="${wish.url}"></td>
                 <td th:text="${wish.description}"></td>
                 <td th:text="${wish.comment}"></td>
                 <td th:text="${wish.price}"></td>
+                <td>
+                    <form th:action="@{'/' + ${wishListStringId} + '/editwish'}" method="post">
+                    <button type="submit">Edit wish</button>
+                    <!-- Optional hidden input field -->
+                    <input type="hidden" name="wishIntegerId" th:value="${wish.id}" />
+                    </form>
+                </td>
             </tr>
         </table>
     </div>

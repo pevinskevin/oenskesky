@@ -29,11 +29,11 @@ public class WishController {
         return "/createawish";
     }
 
-    @PostMapping("/createawish/{WishListStringId}")
-    public String createWish(@PathVariable String WishListStringId,
+    @PostMapping("/createawish/{wishListStringId}")
+    public String createWish(@PathVariable String wishListStringId,
                              @ModelAttribute("wish") Wish wish) {
 
-        wishService.addWish(wish.getUrl(), wish.getDescription(), wish.getComment(), wish.getPrice(), WishListStringId);
-        return "redirect:/" + WishListStringId;
+        wishService.addWish(wish.getUrl(), wish.getDescription(), wish.getComment(), wish.getPrice(), wishListStringId);
+        return "redirect:/" + wishListStringId;
     }
 }

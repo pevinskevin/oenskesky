@@ -20,6 +20,17 @@ public class WishRepository {
         jdbcTemplate.update(query, url, description, comment, price, wishListStringId);
     }
 
+    /* How? Do I just past wish as argument?
+    public void addWishObject(Wish wish){
+        String query = "INSERT INTO wish (url, description, comment, price, wishlist_id, email) VALUES (?, ? ,?, ?, ?, ?)";
+        jdbcTemplate.update(query, wish.getUrl(), wish.getDescription(), wish.getComment(), wish.getPrice(), wish.getWishlistID(), wish.getEmail());
+    }*/
+
+    public void updateWish(String url, String description, String comment, int price, String wishListStringId) {
+        String query = "UPDATE wish SET url = ?, description = ?, comment = ?, price = ? WHERE wishlist_id = ?";
+        jdbcTemplate.update(query, url, description, comment, price, wishListStringId);
+    }
+
     public List<Wish> getAllWishes(String wishListStringId){
         String query = "SELECT * FROM wish WHERE wishlist_id = ?";
         RowMapper<Wish> rowMapper = new BeanPropertyRowMapper<>(Wish.class);
@@ -32,6 +43,12 @@ public class WishRepository {
         catch (Exception e){
             return "0";
         }
+    }
+
+    public Wish getWish(int wishIntegerId){
+        String query = "SELECT * FROM wish WHERE id = ?";
+        RowMapper<Wish> rowMapper = new BeanPropertyRowMapper<>(Wish.class);
+        return jdbcTemplate.queryForObject(query, rowMapper, wishIntegerId);
     }
 
     public String getwishListStringIdAndVerify(String wishListStringId, int wishIntegerId) {

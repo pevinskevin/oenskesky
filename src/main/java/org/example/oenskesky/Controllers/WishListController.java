@@ -1,5 +1,6 @@
 package org.example.oenskesky.Controllers;
 
+import org.example.oenskesky.Models.Wish;
 import org.example.oenskesky.Services.WishService;
 import org.example.oenskesky.Services.WishListService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class WishListController {
@@ -31,7 +33,8 @@ public class WishListController {
         if (((wishService.validateIfWishIdIsNull(wishListStringId)) == null)) {
             nullValue = 0;
             model.addAttribute("wishId", nullValue);
-        } else model.addAttribute("wishId", Integer.parseInt(wishService.validateIfWishIdIsNull(wishListStringId)));
+        } else {model.addAttribute("wishId", Integer.parseInt(wishService.validateIfWishIdIsNull(wishListStringId)));
+            }
         model.addAttribute("wish", wishService.getWishes(wishListStringId));
         return "/view";
     }
@@ -46,5 +49,17 @@ public class WishListController {
     public String createShareLink(@PathVariable String wishListStringId) {
         int wishListIntegerId = wishListService.getIntegerIdForStringId(wishListStringId);
         return String.format("redirect:/%s/%d", wishListStringId, wishListIntegerId);
+    }
+
+    @PostMapping("/{wishListStringId}/editwish")
+    public String editWish(@PathVariable String wishListStringId,
+                           @RequestParam("wishIntegerId") int wishIntegerId,
+                           Model model) {
+
+       Wish wish = wishService.getWish(wishIntegerId);
+        model.addAttribute("wish", wish);
+
+        int wishListIntegerId = wishListService.getIntegerIdForStringId(wishListStringId);
+        return "redirect:/{wishListStringId}/" + wishListIntegerId + "/editwish/" + wishIntegerId;
     }
 }
