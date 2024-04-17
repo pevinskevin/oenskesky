@@ -40,11 +40,13 @@ public class WishListController {
 
     @PostMapping("/{wishListStringId}")
     public String redirectToWishForm(@PathVariable String wishListStringId) {
-        return "redirect:/createawish/" + wishListStringId + "/" + wishListService.getIntegerIdForStringId(wishListStringId);
+        int wishListIntegerId = wishListService.getIntegerIdForStringId(wishListStringId);
+        return String.format("redirect:/createawish/%s/%d", wishListStringId, wishListIntegerId);
     }
 
     @PostMapping("/{wishListStringId}/createsharelink")
     public String createShareLink(@PathVariable String wishListStringId) {
-        return "redirect:/" + wishListStringId + "/" + wishListService.getIntegerIdForStringId(wishListStringId);
+        int wishListIntegerId = wishListService.getIntegerIdForStringId(wishListStringId);
+        return String.format("redirect:/%s/%d", wishListStringId, wishListIntegerId);
     }
 }
