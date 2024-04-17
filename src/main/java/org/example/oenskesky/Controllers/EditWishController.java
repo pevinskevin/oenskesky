@@ -27,7 +27,7 @@ public class EditWishController {
         //model.addAttribute("wish", new Wish());
         Wish wish = wishService.getWish(wishIntegerId);
         model.addAttribute("wish", wish);
-        return "/posteditedwish";
+        return "posteditedwish";
     }
 
     @PostMapping("/{wishListStringId}/{wishListIntegerId}/editedwish/{wishIntegerId}")

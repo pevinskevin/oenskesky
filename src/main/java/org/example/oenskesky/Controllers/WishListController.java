@@ -30,7 +30,7 @@ public class WishListController {
         } else {model.addAttribute("wishId", Integer.parseInt(wishService.validateIfWishIdIsNull(wishListStringId)));
             }
         model.addAttribute("wish", wishService.getWishes(wishListStringId));
-        return "/view";
+        return "view";
     }
 
     @PostMapping("/{wishListStringId}")

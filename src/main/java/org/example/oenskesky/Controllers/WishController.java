@@ -26,7 +26,7 @@ public class WishController {
 
         wishListService.validateStringIdAndWishListIntegerMatch(wishListStringId, wishListIntegerId);
         model.addAttribute("wish", new Wish());
-        return "/createawish";
+        return "createawish";
     }
 
     @PostMapping("/createawish/{wishListStringId}")

@@ -32,7 +32,7 @@ public class SharedURLController {
             model.addAttribute("wishId", nullValue);
         } else model.addAttribute("wishId", Integer.parseInt(wishService.validateIfWishIdIsNull(wishListStringId)));
         model.addAttribute("wish", wishService.getWishes(wishListStringId));
-        return "/sharedurlview";
+        return "sharedurlview";
     }
 
     @PostMapping("/{wishListStringId}/reservewish")

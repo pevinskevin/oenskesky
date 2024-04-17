@@ -23,7 +23,7 @@ public class IndexController {
     //URL ("Uniform Resource Locator") is a subgroup of URI.
     @GetMapping("/")
     public String index(Model model) {
-        return "/index";
+        return "index";
     }
 
     @PostMapping("/createawishlist")
