@@ -25,7 +25,6 @@ public class WishRepository {
         RowMapper<Wish> rowMapper = new BeanPropertyRowMapper<>(Wish.class);
         return jdbcTemplate.query(query, rowMapper, wishListStringId);
     }
-
     public String getLatestWishIdFromWishListId(String wishListStringId) {
         String query = "SELECT MAX(id) FROM wish WHERE wishlist_id = ?";
         try {
@@ -34,12 +33,14 @@ public class WishRepository {
             return "0";
         }
     }
-    public void addEmailToWish(String userEmail, int wishIntegerID){
-        String query = "UPDATE wish SET email = ? WHERE id = ?";
-        jdbcTemplate.update(query, userEmail, wishIntegerID);
-    }
+
     public String getwishListStringIdAndVerify(String wishListStringId, int wishIntegerId) {
         String query = "SELECT wishlist_id FROM wish WHERE wishlist_id = ? AND id = ?";
         return jdbcTemplate.queryForObject(query, String.class, wishListStringId, wishIntegerId);
+    }
+
+    public void addEmailToWish(String userEmail, int wishIntegerID){
+        String query = "UPDATE wish SET email = ? WHERE id = ?";
+        jdbcTemplate.update(query, userEmail, wishIntegerID);
     }
 }

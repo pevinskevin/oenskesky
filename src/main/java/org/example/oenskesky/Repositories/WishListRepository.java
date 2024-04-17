@@ -35,11 +35,6 @@ public class WishListRepository {
         return jdbcTemplate.queryForObject(query, String.class, wishListStringId);
     }
 
-    public void setPasswordViewed(String setToTrue, String wishListStringId) {
-        String query = "UPDATE wishlist SET password_viewed = ? WHERE id = ?";
-        jdbcTemplate.update(query, setToTrue, wishListStringId);
-    }
-
     public String getPasswordViewedStatus(String wishListStringId) {
         String query = "SELECT password_viewed FROM wishlist WHERE id = ?";
         return jdbcTemplate.queryForObject(query, String.class, wishListStringId);
@@ -48,6 +43,11 @@ public class WishListRepository {
     public String getIdAndVerify(String wishListStringId, int wishListIntegerId) {
         String query = "SELECT id FROM wishlist WHERE id = ? AND int_id = ?";
         return jdbcTemplate.queryForObject(query, String.class, wishListStringId, wishListIntegerId);
+    }
+
+    public void setPasswordViewed(String setToTrue, String wishListStringId) {
+        String query = "UPDATE wishlist SET password_viewed = ? WHERE id = ?";
+        jdbcTemplate.update(query, setToTrue, wishListStringId);
     }
 
 }

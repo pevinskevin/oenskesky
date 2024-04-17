@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.UUID;
-
 @Controller
 public class WishListController {
 
@@ -30,10 +28,10 @@ public class WishListController {
         }
         //Hides wish column if there are no wish id's in database.
         int nullValue;
-        if (((wishService.checkIfWishIdIsNull(wishListStringId)) == null)) {
+        if (((wishService.validateIfWishIdIsNull(wishListStringId)) == null)) {
             nullValue = 0;
             model.addAttribute("wishId", nullValue);
-        } else model.addAttribute("wishId", Integer.parseInt(wishService.checkIfWishIdIsNull(wishListStringId)));
+        } else model.addAttribute("wishId", Integer.parseInt(wishService.validateIfWishIdIsNull(wishListStringId)));
         model.addAttribute("wish", wishService.getWishes(wishListStringId));
         return "/view";
     }

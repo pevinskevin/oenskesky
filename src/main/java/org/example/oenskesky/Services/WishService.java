@@ -21,15 +21,16 @@ public class WishService {
         return wishRepository.getAllWishes(wishListStringId);
     }
 
-    public String checkIfWishIdIsNull(String wishListStringId) {
+    public String validateIfWishIdIsNull(String wishListStringId) {
         return wishRepository.getLatestWishIdFromWishListId(wishListStringId);
+    }
+
+    public void validateStringIdAndWishIntegerIdMatch(String wishListStringId, int wishIntegerId) {
+        wishRepository.getwishListStringIdAndVerify(wishListStringId, wishIntegerId);
     }
 
     public void addEmail(String userEmail, int wishId) {
         wishRepository.addEmailToWish(userEmail, wishId);
     }
 
-    public void validateStringIdAndWishIntegerIdMatch(String wishListStringId, int wishIntegerId) {
-        wishRepository.getwishListStringIdAndVerify(wishListStringId, wishIntegerId);
-    }
 }

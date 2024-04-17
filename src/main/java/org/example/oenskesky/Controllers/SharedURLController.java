@@ -26,12 +26,12 @@ public class SharedURLController {
                             @PathVariable int wishListIntegerId,
                             Model model) {
 
-        wishListService.validateStringIdAndIntegerMatch(wishListStringId, wishListIntegerId);
+        wishListService.validateStringIdAndWishListIntegerMatch(wishListStringId, wishListIntegerId);
         int nullValue;
-        if (((wishService.checkIfWishIdIsNull(wishListStringId)) == null)) {
+        if (((wishService.validateIfWishIdIsNull(wishListStringId)) == null)) {
             nullValue = 0;
             model.addAttribute("wishId", nullValue);
-        } else model.addAttribute("wishId", Integer.parseInt(wishService.checkIfWishIdIsNull(wishListStringId)));
+        } else model.addAttribute("wishId", Integer.parseInt(wishService.validateIfWishIdIsNull(wishListStringId)));
         model.addAttribute("wish", wishService.getWishes(wishListStringId));
         return "/sharedurlview";
     }

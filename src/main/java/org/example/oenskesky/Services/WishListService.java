@@ -42,12 +42,13 @@ public class WishListService {
        return wishlistRepository.getPasswordViewedStatus(wishListStringId);
     }
 
+    public String validateStringIdAndWishListIntegerMatch(String wishListStringId, int wishListIntegerId) {
+        // If the wishListStringId and wishListIntegerId do not match, this method throws an exception
+        return wishlistRepository.getIdAndVerify(wishListStringId, wishListIntegerId);
+    }
+
     public void markPasswordAsViewed(String wishListStringId) {
         wishlistRepository.setPasswordViewed("true", wishListStringId);
     }
 
-    public String validateStringIdAndIntegerMatch(String wishListStringId, int wishListIntegerId) {
-        // If the wishListStringId and wishListIntegerId do not match, this method throws an exception
-        return wishlistRepository.getIdAndVerify(wishListStringId, wishListIntegerId);
-    }
 }

@@ -24,7 +24,7 @@ public class WishController {
                                   @PathVariable int wishListIntegerId,
                                   Model model) {
 
-        wishListService.validateStringIdAndIntegerMatch(wishListStringId, wishListIntegerId);
+        wishListService.validateStringIdAndWishListIntegerMatch(wishListStringId, wishListIntegerId);
         model.addAttribute("wish", new Wish());
         return "/createawish";
     }

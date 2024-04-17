@@ -22,7 +22,7 @@ public class ReserveController {
                               @PathVariable int wishIntegerId,
                               Model model) {
 
-        wishListService.validateStringIdAndIntegerMatch(wishListStringId, wishListIntegerId);
+        wishListService.validateStringIdAndWishListIntegerMatch(wishListStringId, wishListIntegerId);
         wishService.validateStringIdAndWishIntegerIdMatch(wishListStringId, wishIntegerId);
         model.addAttribute("wish", new Wish());
         return "reserve";
@@ -33,6 +33,7 @@ public class ReserveController {
                               @PathVariable Integer wishListIntegerId,
                               @PathVariable int wishIntegerId,
                               @ModelAttribute("wish") Wish wish) {
+
         wishService.addEmail(wish.getEmail(), wishIntegerId);
         return "redirect:/{wishListStringId}/{wishListIntegerId}";
     }
