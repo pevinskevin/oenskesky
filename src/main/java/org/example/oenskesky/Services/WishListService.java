@@ -20,6 +20,9 @@ public class WishListService {
         createNewWishList();
         return getLatestIntegerIdFromDbAndReturnItsStringId();
     }
+    public String getWishListStringIdFromWishListPassword(String wishListPassword){
+        return wishlistRepository.getWishListStringIdFromWishListPassword(wishListPassword);
+    }
 
     public String getLatestIntegerIdFromDbAndReturnItsStringId() {
         int wishlistLatestIntegerId = wishlistRepository.getLatestIntegerId();
@@ -38,17 +41,9 @@ public class WishListService {
         return wishlistRepository.getWishListPasswordFromStringId(wishListStringId);
     }
 
-    public String getIsWishListPasswordViewed(String wishListStringId) {
-       return wishlistRepository.getPasswordViewedStatus(wishListStringId);
-    }
-
     public String validateStringIdAndWishListIntegerMatch(String wishListStringId, int wishListIntegerId) {
         // If the wishListStringId and wishListIntegerId do not match, this method throws an exception
         return wishlistRepository.getIdAndVerify(wishListStringId, wishListIntegerId);
-    }
-
-    public void markPasswordAsViewed(String wishListStringId) {
-        wishlistRepository.setPasswordViewed("true", wishListStringId);
     }
 
     public void deleteWishList(String wishListStringId) {

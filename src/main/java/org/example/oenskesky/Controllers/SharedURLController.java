@@ -21,11 +21,12 @@ public class SharedURLController {
     @Autowired
     WishList wishList;
 
-    @GetMapping("/{wishListStringId}/{wishListIntegerId}")
-    public String sharedURL(@PathVariable String wishListStringId,
+    @GetMapping("/{wishListPassword}/{wishListIntegerId}")
+    public String sharedURL(@PathVariable String wishListPassword,
                             @PathVariable int wishListIntegerId,
                             Model model) {
 
+        String wishListStringId = wishListService.getWishListStringIdFromWishListPassword(wishListPassword);
         wishListService.validateStringIdAndWishListIntegerMatch(wishListStringId, wishListIntegerId);
         int nullValue;
         if (((wishService.validateIfWishIdIsNull(wishListStringId)) == null)) {

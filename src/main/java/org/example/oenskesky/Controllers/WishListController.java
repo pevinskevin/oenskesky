@@ -23,12 +23,6 @@ public class WishListController {
     public String showWishlist(@PathVariable String wishListStringId,
                                Model model) {
 
-        //Hides password after being displayed once one webpage.
-        if (wishListService.getIsWishListPasswordViewed(wishListStringId).contains("false")) {
-            model.addAttribute("password", wishListService.getWishListPassword(wishListStringId));
-            wishListService.markPasswordAsViewed(wishListStringId);
-        }
-        //Hides wish column if there are no wish id's in database.
         int nullValue;
         if (((wishService.validateIfWishIdIsNull(wishListStringId)) == null)) {
             nullValue = 0;
@@ -47,8 +41,10 @@ public class WishListController {
 
     @PostMapping("/{wishListStringId}/createsharelink")
     public String createShareLink(@PathVariable String wishListStringId) {
+
         int wishListIntegerId = wishListService.getIntegerIdForStringId(wishListStringId);
-        return String.format("redirect:/%s/%d", wishListStringId, wishListIntegerId);
+        String wishListPassword = wishListService.getWishListPassword(wishListStringId);
+        return String.format("redirect:/%s/%d", wishListPassword, wishListIntegerId);
     }
 
     @PostMapping("/{wishListStringId}/editwish")
