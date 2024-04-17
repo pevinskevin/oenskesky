@@ -42,9 +42,8 @@ public class WishListController {
     @PostMapping("/{wishListStringId}/createsharelink")
     public String createShareLink(@PathVariable String wishListStringId) {
 
-        int wishListIntegerId = wishListService.getIntegerIdForStringId(wishListStringId);
         String wishListPassword = wishListService.getWishListPassword(wishListStringId);
-        return String.format("redirect:/%s/%d", wishListPassword, wishListIntegerId);
+        return String.format("redirect:/sharedlist/%s", wishListPassword);
     }
 
     @PostMapping("/{wishListStringId}/editwish")

@@ -41,6 +41,10 @@ public class WishService {
         wishRepository.updateWish(url, description, comment, price, wishIntegerId);
     }
 
+    public void validateWishId(int wishIntegerId){
+        String verifiedWishId = wishRepository.validateWishId(wishIntegerId);
+    }
+
     public void deleteWish(int wishIntegerId){
         wishRepository.deleteWish(wishIntegerId);
     }

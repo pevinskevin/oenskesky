@@ -16,25 +16,23 @@ public class ReserveController {
     @Autowired
     WishListService wishListService;
 
-    @GetMapping("/{wishListStringId}/{wishListIntegerId}/reservegift/{wishIntegerId}")
-    public String reserveView(@PathVariable String wishListStringId,
-                              @PathVariable Integer wishListIntegerId,
+    @GetMapping("/{wishListPassword}/reservegift/{wishIntegerId}")
+    public String reserveView(@PathVariable String wishListPassword,
                               @PathVariable int wishIntegerId,
                               Model model) {
 
-        wishListService.validateStringIdAndWishListIntegerMatch(wishListStringId, wishListIntegerId);
+        String wishListStringId = wishListService.getWishListStringIdFromWishListPassword(wishListPassword);
         wishService.validateStringIdAndWishIntegerIdMatch(wishListStringId, wishIntegerId);
         model.addAttribute("wish", new Wish());
         return "reserve";
     }
 
-    @PostMapping("/{wishListStringId}/{wishListIntegerId}/reservegift/{wishIntegerId}")
+    @PostMapping("/{wishListStringId}/reservegift/{wishIntegerId}")
     public String reserveGift(@PathVariable String wishListStringId,
-                              @PathVariable Integer wishListIntegerId,
                               @PathVariable int wishIntegerId,
                               @ModelAttribute("wish") Wish wish) {
 
         wishService.addEmail(wish.getEmail(), wishIntegerId);
-        return "redirect:/{wishListStringId}/{wishListIntegerId}";
+        return "redirect:/sharedlist/{wishListStringId}";
     }
 }

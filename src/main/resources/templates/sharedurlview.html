@@ -22,7 +22,7 @@
                 <td>No</td>
 
                 <td>
-                    <form th:action="@{'/' + ${wishListPassword} + '/' + ${wishListIntegerId}}" method="post">
+                    <form th:action="@{'/' + ${wishListPassword} + '/reservewish'}" method="post">
                     <button type="submit">Reserve gift</button>
                     <!-- Optional hidden input field -->
                     <input type="hidden" name="wishIntegerId" th:value="${wish.id}" />

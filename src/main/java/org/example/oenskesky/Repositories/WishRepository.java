@@ -56,6 +56,11 @@ public class WishRepository {
         return jdbcTemplate.queryForObject(query, String.class, wishListStringId, wishIntegerId);
     }
 
+    public String validateWishId(int WishIntegerId){
+        String query = "SELECT id FROM wishlist WHERE id = ?";
+        return jdbcTemplate.queryForObject(query, String.class, WishIntegerId);
+    }
+
     public void addEmailToWish(String userEmail, int wishIntegerID){
         String query = "UPDATE wish SET email = ? WHERE id = ?";
         jdbcTemplate.update(query, userEmail, wishIntegerID);

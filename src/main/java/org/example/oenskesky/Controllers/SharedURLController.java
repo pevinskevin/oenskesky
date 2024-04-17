@@ -21,13 +21,11 @@ public class SharedURLController {
     @Autowired
     WishList wishList;
 
-    @GetMapping("/{wishListPassword}/{wishListIntegerId}")
-    public String sharedURL(@PathVariable String wishListPassword,
-                            @PathVariable int wishListIntegerId,
-                            Model model) {
+    @GetMapping("/sharedlist/{wishListPassword}")
+    public String showSharingWishList(@PathVariable String wishListPassword,
+                                      Model model) {
 
         String wishListStringId = wishListService.getWishListStringIdFromWishListPassword(wishListPassword);
-        wishListService.validateStringIdAndWishListIntegerMatch(wishListStringId, wishListIntegerId);
         int nullValue;
         if (((wishService.validateIfWishIdIsNull(wishListStringId)) == null)) {
             nullValue = 0;
@@ -37,11 +35,10 @@ public class SharedURLController {
         return "/sharedurlview";
     }
 
-    @PostMapping("/{wishListStringId}/{wishListIntegerId}")
+    @PostMapping("/{wishListStringId}/reservewish")
     public String reserveWish(@PathVariable String wishListStringId,
-                              @PathVariable int wishListIntegerId,
                               @RequestParam("wishIntegerId") int wishIntegerId) {
 
-        return "redirect:/{wishListStringId}/{wishListIntegerId}/reservegift/" + wishIntegerId;
+        return "redirect:/{wishListStringId}/reservegift/" + wishIntegerId;
     }
 }

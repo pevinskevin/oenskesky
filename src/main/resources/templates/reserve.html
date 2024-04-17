@@ -10,7 +10,7 @@
 <body>
 <div class="centerDiv">
     <input type="hidden" name="wishId" th:value="${wish.id}" />
-    <form th:action="@{'/' + ${wishListStringId} + '/' + ${wishListIntegerId} + '/reservegift/' + ${wishIntegerId}  }" th:object="${wish}" method="post">
+    <form th:action="@{'/' + ${wishListPassword} + '/reservegift/' + ${wishIntegerId}  }" th:object="${wish}" method="post">
         <label for="url">Enter your email:</label>
         <input th:field="*{email}" type="text" id="url" name="URL"/> <br> <br>
         <input type="submit" value="send">
