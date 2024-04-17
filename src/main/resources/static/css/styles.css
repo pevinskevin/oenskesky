@@ -8,8 +8,20 @@ body {
     align-items: center;
 }
 
-#centerDiv {
+.centerDiv {
     /* Add any additional styles you want to your div */
     /* For example, you might want to add a border or background color */
+    margin-top: -25%;
+    font-size: 1.5em;
+    font-family: "Helvetica Neue";
+}
 
+form {
+    font-size: 1.5em;
+    font-family: "Helvetica Neue";
+}
+
+button {
+    font-size: 0.4em;
+    font-family: "Helvetica Neue";
 }

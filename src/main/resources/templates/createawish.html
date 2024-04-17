@@ -3,23 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- Unless I specify the full path the application won't be able to find the file,
+   and instead the WishlistController will try to take it instead due to internal pathing error-->
+    <link rel="stylesheet" th:href="@{/resources/static/css/styles.css}">
 </head>
 <body>
-<form th:action="@{'/createawish/' + ${wishlistId}}" th:object="${wish}" method="post">
+<div id="centerDiv">
+    <form th:action="@{'/createawish/' + ${wishlistId}}" th:object="${wish}" method="post">
 
-    <label for="url">URL:</label>
-    <input th:field="*{url}" type="text" id="url" name="URL"/> <br> <br>
+        <label for="url">URL:</label>
+        <input th:field="*{url}" type="text" id="url" name="URL"/> <br> <br>
 
-    <label for="description">Wish name:</label>
-    <input th:field="*{description}" type="text" id="description" name="Wish name"/> <br> <br>
+        <label for="description">Wish name:</label>
+        <input th:field="*{description}" type="text" id="description" name="Wish name"/> <br> <br>
 
-    <label for="comment">Comments:</label>
-    <textarea th:field="*{comment}" id="comment" name="Comments" rows="4" cols="50"/> </textarea> <br> <br>
+        <label for="comment">Comments:</label>
+        <textarea th:field="*{comment}" id="comment" name="Comments" rows="4" cols="50"/> </textarea> <br> <br>
 
-    <label for="price">Price:</label>
-    <input th:field="*{price}" type="number" id="price" name="Price"/> <br> <br>
+        <label for="price">Price:</label>
+        <input th:field="*{price}" type="number" id="price" name="Price"/> <br> <br>
 
-    <input type="submit" value="send">
-</form>
+        <input type="submit" value="send">
+    </form>
+</div>
 </body>
 </html>

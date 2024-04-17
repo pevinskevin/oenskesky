@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- Unless I specify the full path the application won't be able to find the file,
+   and instead the WishlistController will try to take it instead due to internal pathing error-->
+    <link rel="stylesheet" th:href="@{/resources/static/css/styles.css}">
 </head>
 <body>
-<div th:if="${wishId != 0}">
+<div class="centerDiv" th:if="${wishId != 0}">
     <table>
         <thead><td>URL</td><td>Name</td><td>Comment</td><td>Price</td><td>Reserved</td></thead>
         <tr th:each="wish : ${wish}">

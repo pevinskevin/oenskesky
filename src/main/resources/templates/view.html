@@ -3,35 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- Unless I specify the full path the application won't be able to find the file,
+   and instead the WishlistController will try to take it instead due to internal pathing error-->
+    <link rel="stylesheet" th:href="@{/resources/static/css/styles.css}">
 </head>
 <body>
-<h1 th:text="${password}"></h1>
+    <div class="centerDiv">
+        <h1 th:text="${password}"></h1>
 
-<!--Only displays wishes if there are wishes in the DB.-->
-<div th:if="${wishId != 0}">
-    <table>
-        <thead><td>URL</td><td>Name</td><td>Comment</td><td>Price</td></thead>
-        <tr th:each="wish : ${wish}">
-            <td th:text="${wish.url}"></td>
-            <td th:text="${wish.description}"></td>
-            <td th:text="${wish.comment}"></td>
-            <td th:text="${wish.price}"></td>
-        </tr>
-    </table>
-</div>
+        <!--Only displays wishes if there are wishes in the DB.-->
+        <div th:if="${wishId != 0}">
+            <table>
+                <thead><td>URL</td><td>Name</td><td>Comment</td><td>Price</td></thead>
+                <tr th:each="wish : ${wish}">
+                    <td th:text="${wish.url}"></td>
+                    <td th:text="${wish.description}"></td>
+                    <td th:text="${wish.comment}"></td>
+                    <td th:text="${wish.price}"></td>
+                </tr>
+            </table>
+        </div>
 
-<!--Button to create a new wish.-->
-<form th:action="@{'/' + ${wishlistId}}" method="post">
-    <button type="submit">Add wish to wishlist</button>
-    <!-- Optional hidden input field -->
-    <input type="hidden" name="data" value="additionalData" />
-</form>
-
-<form th:action="@{'/' + ${wishlistId} + '/createsharelink'}" method="post">
-    <button type="submit">Create webpage for sharing</button>
-    <!-- Optional hidden input field -->
-    <input type="hidden" name="data" value="additionalData" />
-</form>
-
+        <!--Button to create a new wish.-->
+        <form th:action="@{'/' + ${wishlistId}}" method="post">
+            <button type="submit">Add wish to wishlist</button>
+            <!-- Optional hidden input field -->
+            <input type="hidden" name="data" value="additionalData" />
+        </form>
+        <br>
+        <form th:action="@{'/' + ${wishlistId} + '/createsharelink'}" method="post">
+            <button type="submit">Create webpage for sharing</button>
+            <!-- Optional hidden input field -->
+            <input type="hidden" name="data" value="additionalData" />
+        </form>
+    </div>
 </body>
 </html>

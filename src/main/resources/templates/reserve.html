@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- Unless I specify the full path the application won't be able to find the file,
+   and instead the WishlistController will try to take it instead due to internal pathing error-->
+    <link rel="stylesheet" th:href="@{/resources/static/css/styles.css}">
 </head>
 <body>
-
-<input type="hidden" name="wishId" th:value="${wish.id}" />
-
-
-<form th:action="@{'/' + ${id} + '/' + ${intId} + '/reservegift/' + ${wishId}  }" th:object="${wish}" method="post">
-
-    <label for="url">Enter your email:</label>
-    <input th:field="*{email}" type="text" id="url" name="URL"/> <br> <br>
-
-    <input type="submit" value="send">
-</form>
+<div class="centerDiv">
+    <input type="hidden" name="wishId" th:value="${wish.id}" />
+    <form th:action="@{'/' + ${id} + '/' + ${intId} + '/reservegift/' + ${wishId}  }" th:object="${wish}" method="post">
+        <label for="url">Enter your email:</label>
+        <input th:field="*{email}" type="text" id="url" name="URL"/> <br> <br>
+        <input type="submit" value="send">
+    </form>
+</div>
 </body>
 </html>
