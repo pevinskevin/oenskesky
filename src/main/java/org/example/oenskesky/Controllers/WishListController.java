@@ -62,4 +62,22 @@ public class WishListController {
         int wishListIntegerId = wishListService.getIntegerIdForStringId(wishListStringId);
         return "redirect:/{wishListStringId}/" + wishListIntegerId + "/editwish/" + wishIntegerId;
     }
+
+    @PostMapping("/{wishListStringId}/deletewish")
+    public String deleteWish(@PathVariable String wishListStringId,
+                             @RequestParam("wishIntegerId") int wishIntegerId,
+                             Model model) {
+
+        Wish wish = wishService.getWish(wishIntegerId);
+        model.addAttribute("wish", wish);
+        wishService.deleteWish(wishIntegerId);
+        return "redirect:/{wishListStringId}";
+    }
+
+    @PostMapping("/{wishListStringId}/deletewishlist")
+    public String deleteWishList(@PathVariable String wishListStringId) {
+
+        wishListService.deleteWishList(wishListStringId);
+        return "redirect:/";
+    }
 }

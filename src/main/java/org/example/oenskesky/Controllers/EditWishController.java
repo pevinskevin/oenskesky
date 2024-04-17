@@ -36,7 +36,7 @@ public class EditWishController {
                                  @PathVariable int wishIntegerId,
                                  @ModelAttribute("wish") Wish wish){
 
-        wishService.updateWish(wish.getUrl(), wish.getDescription(), wish.getComment(), wish.getPrice(), wishListStringId);
+        wishService.updateWish(wish.getUrl(), wish.getDescription(), wish.getComment(), wish.getPrice(), wishIntegerId);
         return "redirect:/{wishListStringId}";
     }
 

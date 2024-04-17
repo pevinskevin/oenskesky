@@ -19,6 +19,7 @@
             <td>Comment</td>
             <td>Price</td>
             <td><!--Edit wish--></td>
+            <td><!--Delete wish--></td>
             </thead>
             <tr th:each="wish : ${wish}">
                 <td th:text="${wish.url}"></td>
@@ -30,6 +31,13 @@
                     <button type="submit">Edit wish</button>
                     <!-- Optional hidden input field -->
                     <input type="hidden" name="wishIntegerId" th:value="${wish.id}" />
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{'/' + ${wishListStringId} + '/deletewish'}" method="post">
+                        <button type="submit">Delete wish</button>
+                        <!-- Optional hidden input field -->
+                        <input type="hidden" name="wishIntegerId" th:value="${wish.id}" />
                     </form>
                 </td>
             </tr>
@@ -44,6 +52,14 @@
     <br>
     <form th:action="@{'/' + ${wishListStringId} + '/createsharelink'}" method="post">
         <button type="submit">Create webpage for sharing</button>
+        <!-- Optional hidden input field. -->
+        <input type="hidden" name="data" value="additionalData"/>
+    </form>
+    <br>
+    <br>
+    <br>
+    <form th:action="@{'/' + ${wishListStringId} + '/deletewishlist'}" method="post">
+        <button type="submit">Delete Wish List</button>
         <!-- Optional hidden input field. -->
         <input type="hidden" name="data" value="additionalData"/>
     </form>

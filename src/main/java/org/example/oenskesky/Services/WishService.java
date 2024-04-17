@@ -17,10 +17,6 @@ public class WishService {
         wishRepository.addWish(url, description, comment, price, wishListStringId);
     }
 
-    public void updateWish(String url, String description, String comment, int price, String wishListStringId){
-        wishRepository.updateWish(url, description, comment, price, wishListStringId);
-    }
-
     public Wish getWish(int wishIntegerId){
         return wishRepository.getWish(wishIntegerId);
     }
@@ -41,4 +37,11 @@ public class WishService {
         wishRepository.addEmailToWish(userEmail, wishId);
     }
 
+    public void updateWish(String url, String description, String comment, int price, int wishIntegerId){
+        wishRepository.updateWish(url, description, comment, price, wishIntegerId);
+    }
+
+    public void deleteWish(int wishIntegerId){
+        wishRepository.deleteWish(wishIntegerId);
+    }
 }

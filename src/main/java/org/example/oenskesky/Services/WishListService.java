@@ -51,4 +51,7 @@ public class WishListService {
         wishlistRepository.setPasswordViewed("true", wishListStringId);
     }
 
+    public void deleteWishList(String wishListStringId) {
+        wishlistRepository.deleteWishList(wishListStringId);
+    }
 }

@@ -50,4 +50,8 @@ public class WishListRepository {
         jdbcTemplate.update(query, setToTrue, wishListStringId);
     }
 
+    public void deleteWishList(String wishListStringId){
+        String query = "DELETE FROM wishlist where id = ?";
+        jdbcTemplate.update(query, wishListStringId);
+    }
 }

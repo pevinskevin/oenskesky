@@ -26,9 +26,9 @@ public class WishRepository {
         jdbcTemplate.update(query, wish.getUrl(), wish.getDescription(), wish.getComment(), wish.getPrice(), wish.getWishlistID(), wish.getEmail());
     }*/
 
-    public void updateWish(String url, String description, String comment, int price, String wishListStringId) {
-        String query = "UPDATE wish SET url = ?, description = ?, comment = ?, price = ? WHERE wishlist_id = ?";
-        jdbcTemplate.update(query, url, description, comment, price, wishListStringId);
+    public void updateWish(String url, String description, String comment, int price, int wishIntegerId) {
+        String query = "UPDATE wish SET url = ?, description = ?, comment = ?, price = ? WHERE id = ?";
+        jdbcTemplate.update(query, url, description, comment, price, wishIntegerId);
     }
 
     public List<Wish> getAllWishes(String wishListStringId){
@@ -59,5 +59,10 @@ public class WishRepository {
     public void addEmailToWish(String userEmail, int wishIntegerID){
         String query = "UPDATE wish SET email = ? WHERE id = ?";
         jdbcTemplate.update(query, userEmail, wishIntegerID);
+    }
+
+    public void deleteWish(int wishIntegerId){
+        String query = "DELETE FROM wish WHERE id = ?";
+        jdbcTemplate.update(query, wishIntegerId);
     }
 }
