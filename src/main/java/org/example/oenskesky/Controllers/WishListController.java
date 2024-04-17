@@ -45,7 +45,6 @@ public class WishListController {
 
     @PostMapping("/{wishListStringId}/createsharelink")
     public String createShareLink(@PathVariable String wishListStringId) {
-        int intId = wishListService.getIntegerIdForStringId(wishListStringId);
-        return "redirect:/" + wishListStringId + "/" + intId;
+        return "redirect:/" + wishListStringId + "/" + wishListService.getIntegerIdForStringId(wishListStringId);
     }
 }

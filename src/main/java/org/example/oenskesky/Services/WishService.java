@@ -13,20 +13,20 @@ public class WishService {
     @Autowired
     private WishRepository wishRepository;
 
-    public void addWish(String url, String description, String comment, int price, String wishlistId){
-        wishRepository.addWish(url, description, comment, price, wishlistId);
+    public void addWish(String url, String description, String comment, int price, String wishListStringId){
+        wishRepository.addWish(url, description, comment, price, wishListStringId);
     }
 
-    public List<Wish> getWishes(String wishlistId){
-        return wishRepository.getAllWishes(wishlistId);
+    public List<Wish> getWishes(String wishListStringId){
+        return wishRepository.getAllWishes(wishListStringId);
     }
 
-    public String checkIfWishIdIsNull(String id) {
-        return wishRepository.getLatestWishIdFromWishListId(id);
+    public String checkIfWishIdIsNull(String wishListStringId) {
+        return wishRepository.getLatestWishIdFromWishListId(wishListStringId);
     }
 
-    public void addEmail(String email, int id) {
-        wishRepository.addEmailToWish(email, id);
+    public void addEmail(String userEmail, int wishId) {
+        wishRepository.addEmailToWish(userEmail, wishId);
     }
 
     public void validateStringIdAndWishIntegerIdMatch(String wishListStringId, int wishIntegerId) {

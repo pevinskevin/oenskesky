@@ -19,21 +19,20 @@ public class WishController {
     @Autowired
     WishService wishService;
 
-    //If I don't name the PathVariable the program crashes. - No idea why.
-    @GetMapping("/createawish/{wishListStringId}/{wishlistintegerid}")
+    @GetMapping("/createawish/{wishListStringId}/{wishListIntegerId}")
     public String displayWishForm(@PathVariable String wishListStringId,
-                                  @PathVariable int wishlistintegerid,
+                                  @PathVariable int wishListIntegerId,
                                   Model model) {
 
-        wishListService.validateStringIdAndIntegerMatch(wishListStringId, wishlistintegerid);
+        wishListService.validateStringIdAndIntegerMatch(wishListStringId, wishListIntegerId);
         model.addAttribute("wish", new Wish());
         return "/createawish";
     }
 
-    //If I don't name the PathVariables weirdly the program crashes. - No idea why.
     @PostMapping("/createawish/{WishListStringId}")
     public String createWish(@PathVariable String WishListStringId,
                              @ModelAttribute("wish") Wish wish) {
+
         wishService.addWish(wish.getUrl(), wish.getDescription(), wish.getComment(), wish.getPrice(), WishListStringId);
         return "redirect:/" + WishListStringId;
     }

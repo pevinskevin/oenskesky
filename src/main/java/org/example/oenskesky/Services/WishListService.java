@@ -22,8 +22,8 @@ public class WishListService {
     }
 
     public String getLatestIntegerIdFromDbAndReturnItsStringId() {
-        int integerId = wishlistRepository.getLatestIntegerId();
-        return getStringIdForIntegerId(integerId);
+        int wishlistLatestIntegerId = wishlistRepository.getLatestIntegerId();
+        return getStringIdForIntegerId(wishlistLatestIntegerId);
     }
 
     public int getIntegerIdForStringId(String wishListStringId) {

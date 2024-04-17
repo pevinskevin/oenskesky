@@ -16,7 +16,6 @@ public class ReserveController {
     @Autowired
     WishListService wishListService;
 
-    //If I don't name the PathVariables weirdly the program crashes. - No idea why.
     @GetMapping("/{wishListStringId}/{wishListIntegerId}/reservegift/{wishIntegerId}")
     public String reserveView(@PathVariable String wishListStringId,
                               @PathVariable Integer wishListIntegerId,
@@ -29,7 +28,6 @@ public class ReserveController {
         return "reserve";
     }
 
-    //If I don't name the PathVariables weirdly the program crashes. - No idea why.
     @PostMapping("/{wishListStringId}/{wishListIntegerId}/reservegift/{wishIntegerId}")
     public String reserveGift(@PathVariable String wishListStringId,
                               @PathVariable Integer wishListIntegerId,
