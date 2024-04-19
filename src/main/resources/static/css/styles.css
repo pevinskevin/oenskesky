@@ -2,15 +2,30 @@ body {
     height: 100vh;
     margin: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* layout main content in a column */
     align-items: center;
-
+    justify-content: flex-start; /* align to start, removing centering */
+    padding-top: 50px; /* space at the top, adjust as needed */
 }
 
 .centerDiv {
-    margin-top: -25%;
+    width: 45%; /* take full width */
     font-size: 1.4em;
     font-family: "Helvetica Neue";
+    overflow: auto; /* add scroll when content overflows */
+}
+
+.centerbutton {
+    text-align: center;
+}
+
+.formatDiv {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .formDiv {
@@ -42,8 +57,12 @@ table {
     border-collapse: collapse;
 }
 
+.tablediv {
+
+}
+
 td {
-    padding: 10px;
+    padding: 10px; /* Optional padding for cells */
     padding-right: 20px;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -61,7 +80,7 @@ border-bottom: 1px solid black;
 
 .wishform {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; //This property ensures that the flex items are stacked vertically
     align-items: center;
     justify-content: center;
 }
