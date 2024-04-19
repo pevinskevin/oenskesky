@@ -5,11 +5,10 @@ CREATE DATABASE IF NOT EXISTS oenskesky;
 USE oenskesky;
 
 CREATE TABLE wishlist (
-                          `id` VARCHAR(255) UNIQUE,
                           `int_id` INT AUTO_INCREMENT PRIMARY KEY,
-                          `password` VARCHAR(255) NOT NULL,
-                          `password_viewed` ENUM ('false', 'true') DEFAULT 'false'
-);
+                          `id` VARCHAR(255) UNIQUE,
+                          `password` VARCHAR(255) NOT NULL
+                      );
 CREATE TABLE wish (
                       `id` INT AUTO_INCREMENT PRIMARY KEY,
                       `url` VARCHAR(255) NOT NULL,
