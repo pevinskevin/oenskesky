@@ -12,9 +12,11 @@ body {
     /* Add any additional styles you want to your div */
     /* For example, you might want to add a border or background color */
     margin-top: -25%;
-    font-size: 1.5em;
+    font-size: 1.4em;
     font-family: "Helvetica Neue";
+
 }
+
 
 form {
     font-size: 1.5em;
@@ -24,4 +26,39 @@ form {
 button {
     font-size: 0.4em;
     font-family: "Helvetica Neue";
+    height: auto; /* Allow the button to adjust its height based on content */
+    display: inline-block; /* Display the button as an inline block */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.buttoncontainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+
+}
+
+
+table {
+    width: 800px;
+
+}
+
+td {
+    padding: 10px; /* Optional padding for cells */
+    padding-right: 20px;
+
+
+}
+
+tr {
+
+
+}
+.buttonform {
+    /* Other styles... */
+    display: flex;
+    /* Center the items vertically */
+    align-items: center;
+    justify-content: center;
 }

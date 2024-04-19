@@ -13,7 +13,7 @@ public class WishListService {
     private WishListRepository wishlistRepository;
 
     public void createNewWishList() {
-        wishlistRepository.createNewWishlistInDb(UUID.randomUUID().toString(), UUID.randomUUID().toString());
+        wishlistRepository.createNewWishlist(UUID.randomUUID().toString(), UUID.randomUUID().toString());
     }
 
     public String createWishListAndReturnStringId(){

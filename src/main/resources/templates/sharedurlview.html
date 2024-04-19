@@ -10,20 +10,26 @@
 <body>
 <div class="centerDiv" th:if="${wishId != 0}">
     <table>
-        <thead><td>URL</td><td>Name</td><td>Comment</td><td>Price</td><td>Reserved</td></thead>
+        <thead>
+        <td><b>Wish</b></td>
+        <td><b>Specifications (size, color etc.)</b></td>
+        <td><b>Price</b></td>
+        <td><b>Reserved</b></td>
+        </thead>
         <tr th:each="wish : ${wish}">
-            <td th:text="${wish.url}"></td>
-            <td th:text="${wish.description}"></td>
+
+            <td><a th:href="${wish.url}" th:text="${wish.description}"></a></td>
+
             <td th:text="${wish.comment}"></td>
-            <td th:text="${wish.price}"></td>
+            <td th:text="${wish.price} + ',00'"></td>
 
             <div th:if="${wish.email == null}">
 
                 <td>No</td>
 
                 <td>
-                    <form th:action="@{'/' + ${wishListPassword} + '/reservewish'}" method="post">
-                    <button type="submit">Reserve gift</button>
+                    <form class="buttonform" th:action="@{'/' + ${wishListPassword} + '/reservewish'}" method="post">
+                    <button type="submit">Reserve wish</button>
                     <!-- Optional hidden input field -->
                     <input type="hidden" name="wishIntegerId" th:value="${wish.id}" />
                     </form>

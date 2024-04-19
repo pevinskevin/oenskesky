@@ -10,30 +10,30 @@
 <body>
 <div class="centerDiv">
     <!-- Only displays wishes if there are wishes in the DB. -->
-    <div th:if="${wishId != 0}">
-        <table>
+    <div id="tablediv" th:if="${wishId != 0}">
+        <table id="table">
             <thead>
-            <td>URL</td>
-            <td>Name</td>
-            <td>Comment</td>
-            <td>Price</td>
+            <tr>
+            <td><b>Wish</b></td>
+            <td><b>Specifications (size, color etc.)</b></td>
+            <td><b>Price</b></td>
             <td><!--Edit wish--></td>
             <td><!--Delete wish--></td>
+            </tr>
             </thead>
             <tr th:each="wish : ${wish}">
-                <td th:text="${wish.url}"></td>
-                <td th:text="${wish.description}"></td>
+                <td><a th:href="${wish.url}" th:text="${wish.description}"></a></td>
                 <td th:text="${wish.comment}"></td>
-                <td th:text="${wish.price}"></td>
+                <td th:text="${wish.price} + ',00'"></td>
                 <td>
-                    <form th:action="@{'/' + ${wishListStringId} + '/editwish'}" method="post">
+                    <form class="buttonform" th:action="@{'/' + ${wishListStringId} + '/editwish'}" method="post">
                     <button type="submit">Edit wish</button>
                     <!-- Optional hidden input field -->
                     <input type="hidden" name="wishIntegerId" th:value="${wish.id}" />
                     </form>
                 </td>
                 <td>
-                    <form th:action="@{'/' + ${wishListStringId} + '/deletewish'}" method="post">
+                    <form class="buttonform" th:action="@{'/' + ${wishListStringId} + '/deletewish'}" method="post">
                         <button type="submit">Delete wish</button>
                         <!-- Optional hidden input field -->
                         <input type="hidden" name="wishIntegerId" th:value="${wish.id}" />
@@ -42,26 +42,30 @@
             </tr>
         </table>
     </div>
-    <!-- Button to create a new wish. -->
-    <form th:action="@{'/' + ${wishListStringId}}" method="post">
-        <button type="submit">Add wish to wish list</button>
-        <!-- Optional hidden input field. -->
-        <input type="hidden" name="data" value="additionalData"/>
-    </form>
-    <br>
-    <form th:action="@{'/' + ${wishListStringId} + '/createsharelink'}" method="post">
-        <button type="submit">Create webpage for sharing</button>
-        <!-- Optional hidden input field. -->
-        <input type="hidden" name="data" value="additionalData"/>
-    </form>
-    <br>
-    <br>
-    <br>
-    <form th:action="@{'/' + ${wishListStringId} + '/deletewishlist'}" method="post">
-        <button type="submit">Delete Wish List</button>
-        <!-- Optional hidden input field. -->
-        <input type="hidden" name="data" value="additionalData"/>
-    </form>
+
+    <div class="buttoncontainer">
+        <!-- Button to create a new wish. -->
+        <form th:action="@{'/' + ${wishListStringId}}" method="post">
+            <button type="submit">Add wish to wish list</button>
+            <!-- Optional hidden input field. -->
+            <input type="hidden" name="data" value="additionalData"/>
+        </form>
+        <br>
+        <form th:action="@{'/' + ${wishListStringId} + '/createsharelink'}" method="post">
+            <button type="submit">Share wish list</button>
+            <!-- Optional hidden input field. -->
+            <input type="hidden" name="data" value="additionalData"/>
+        </form>
+        <br>
+        <br>
+        <br>
+        <form th:action="@{'/' + ${wishListStringId} + '/deletewishlist'}" method="post">
+            <button type="submit">Delete Wish List</button>
+            <!-- Optional hidden input field. -->
+            <input type="hidden" name="data" value="additionalData"/>
+        </form>
+    </div>
 </div>
+
 </body>
 </html>

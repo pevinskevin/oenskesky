@@ -10,7 +10,7 @@ public class WishListRepository {
     JdbcTemplate jdbcTemplate;
 
     //
-    public void createNewWishlistInDb(String randomID, String randomPassword) {
+    public void createNewWishlist(String randomID, String randomPassword) {
         String query = "INSERT INTO wishlist (id, password) VALUES (?, ?) ";
         jdbcTemplate.update(query, randomID, randomPassword);
     }
