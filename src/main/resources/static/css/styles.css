@@ -2,17 +2,17 @@ body {
     height: 100vh;
     margin: 0;
     display: flex;
-    flex-direction: column; /* layout main content in a column */
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* align to start, removing centering */
-    padding-top: 50px; /* space at the top, adjust as needed */
+    justify-content: flex-start;
+    padding-top: 50px;
 }
 
 .centerDiv {
-    width: 45%; /* take full width */
+    width: 45%;
     font-size: 1.4em;
     font-family: "Helvetica Neue";
-    overflow: auto; /* add scroll when content overflows */
+    overflow: auto;
 }
 
 .centerbutton {
@@ -25,7 +25,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .formDiv {
@@ -57,12 +56,8 @@ table {
     border-collapse: collapse;
 }
 
-.tablediv {
-
-}
-
 td {
-    padding: 10px; /* Optional padding for cells */
+    padding: 10px;
     padding-right: 20px;
     padding-top: 25px;
     padding-bottom: 25px;
