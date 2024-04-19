@@ -1,22 +1,22 @@
 body {
-    /* Ensure the body takes up the full height of the page */
     height: 100vh;
     margin: 0;
-    /* Use flexbox to center the div both vertically and horizontally */
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .centerDiv {
-    /* Add any additional styles you want to your div */
-    /* For example, you might want to add a border or background color */
     margin-top: -25%;
     font-size: 1.4em;
     font-family: "Helvetica Neue";
-
 }
 
+.formDiv {
+    font-size: 1.4em;
+    font-family: "Helvetica Neue";
+}
 
 form {
     font-size: 1.5em;
@@ -24,41 +24,44 @@ form {
 }
 
 button {
-    font-size: 0.4em;
+    font-size: 0.44em;
     font-family: "Helvetica Neue";
-    height: auto; /* Allow the button to adjust its height based on content */
-    display: inline-block; /* Display the button as an inline block */
-    white-space: nowrap; /* Prevent text from wrapping */
+    height: auto;
+    display: inline-block;
+    white-space: nowrap;
 }
 
 .buttoncontainer {
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
-
 }
 
-
 table {
-    width: 800px;
-
+    width: 850px;
+    border-collapse: collapse;
 }
 
 td {
     padding: 10px; /* Optional padding for cells */
     padding-right: 20px;
-
-
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 tr {
-
-
+border-bottom: 1px solid black;
 }
+
 .buttonform {
-    /* Other styles... */
     display: flex;
-    /* Center the items vertically */
+    align-items: center;
+    justify-content: center;
+}
+
+.wishform {
+    display: flex;
+    flex-direction: column; //This property ensures that the flex items are stacked vertically
     align-items: center;
     justify-content: center;
 }

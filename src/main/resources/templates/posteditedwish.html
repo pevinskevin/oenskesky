@@ -15,19 +15,27 @@
 <div id="centerDiv">
     <form th:action="@{'/' + ${wishListStringId} + '/' + ${wishListIntegerId} + '/editedwish/' + ${wishIntegerId}}" th:object="${wish}" method="post">
 
-        <label for="url">URL:</label>
-        <input th:field="*{url}" type="text" id="url" name="URL"/> <br> <br>
+        <div class="wishform">
+            <label for="url">URL:</label>
+            <input th:field="*{url}" type="text" id="url" name="URL"/> <br> <br>
+        </div>
 
-        <label for="description">Wish name:</label>
-        <input th:field="*{description}" type="text" id="description" name="Wish name"/> <br> <br>
+        <div class="wishform">
+            <label for="description">Wish name:</label>
+            <input th:field="*{description}" type="text" id="description" name="Wish name"/> <br> <br>
+        </div>
 
-        <label for="comment">Comments:</label>
-        <textarea th:field="*{comment}" id="comment" name="Comments" rows="4" cols="50"/> </textarea> <br> <br>
+        <div class="wishform">
+            <label for="comment">Comments:</label>
+            <textarea th:field="*{comment}" id="comment" name="Comments" rows="4" cols="50"/> </textarea> <br> <br>
+        </div>
 
-        <label for="price">Price:</label>
-        <input th:field="*{price}" type="number" id="price" name="Price"/> <br> <br>
+        <div class="wishform">
+            <label for="price">Price:</label>
+            <input th:field="*{price}" type="number" id="price" name="Price"/> <br> <br>
+        </div>
 
-        <input type="submit" value="send">
+        <input type="submit" value="Submit Edited Wish">
     </form>
 </div>
 </body>
